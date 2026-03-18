@@ -1,9 +1,10 @@
 import torch
 import torch
 import torch.nn as nn
-from torch.nn import functional as F
 import re
-
+from torch.nn import functional as F
+import time
+start=time.time()
 with open("traindata.txt",'r',encoding='utf-8') as f:
        text=f.read()
 chars=list(set(text))
@@ -130,3 +131,7 @@ logits, loss = m(xb, yb)
 print(logits.shape)
 print(loss)
 print(decode(m.generate(idx = torch.zeros((1, 1), dtype=torch.long), max_new_tokens=100)[0].tolist()))
+end=time.time()
+print("The time taken :",end-start)
+print(end)
+print(start)
