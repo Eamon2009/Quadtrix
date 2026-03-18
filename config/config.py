@@ -9,4 +9,4 @@ train_split = 0.9
 seed = 1337
 
 # device
-device = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cpu" if torch.cuda.is_available() else "cuda"
