@@ -12,6 +12,6 @@ dropout = 0.2
 # training
 batch_size = 4
 learning_rate = 3e-4
-# max_iters = 5000
-# eval_interval = 500
-# eval_iters = 200
+max_iters = 5000
+eval_interval = 500
+eval_iters = 200

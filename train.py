@@ -3,9 +3,9 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 import re
+
 with open("traindata.txt",'r',encoding='utf-8') as f:
        text=f.read()
-
 chars=list(set(text))
 vocab_size=len(chars)
 print(''.join(chars))
