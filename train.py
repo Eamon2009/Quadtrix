@@ -6,13 +6,14 @@ import time
 from config.config import *
 
 start = time.time()
+
 # hyperparameters
 batch_size = 16 # how many independent sequences will we process in parallel?
 block_size = 32 # what is the maximum context length for predictions?
 max_iters = 5000
 eval_interval = 100
 learning_rate = 1e-3
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu' # my case it's the cpu
 eval_iters = 200
 n_embd = 64
 n_head = 4
@@ -120,6 +121,29 @@ def estimate_loss():
         out[split] = losses.mean()
     m.train()
     return out
+def __init__(self, head_size):
+        super().__init__()
+        self.key = nn.Linear(n_embd, head_size, bias=False)
+        self.query = nn.Linear(n_embd, head_size, bias=False)
+        self.value = nn.Linear(n_embd, head_size, bias=False)
+        self.register_buffer('tril', torch.tril(torch.ones(block_size, block_size)))
+
+        self.dropout = nn.Dropout(dropout)
+
+def forward(self, x):
+        B,T,C = x.shape
+        k = self.key(x)   # (B,T,C)
+        q = self.query(x) # (B,T,C)
+        # compute attention scores ("affinities")
+        wei = q @ k.transpose(-2,-1) * C**-0.5 # (B, T, C) @ (B, C, T) -> (B, T, T)
+        wei = wei.masked_fill(self.tril[:T, :T] == 0, float('-inf')) # (B, T, T)
+        wei = F.softmax(wei, dim=-1) # (B, T, T)
+        wei = self.dropout(wei)
+        # perform the weighted aggregation of the values
+        v = self.value(x) # (B,T,C)
+        out = wei @ v # (B, T, T) @ (B, T, C) -> (B, T, C)
+        return out
+
 
 # Adding a Py torch optimizer 
 optimizer = torch.optim.AdamW(m.parameters(), lr=1e-3)
@@ -134,6 +158,32 @@ for steps in range(10000):
     optimizer.zero_grad(set_to_none=True)
     loss.backward()
     optimizer.step()
+
+
+model = BigramLanguageModel()
+m = model.to(device)
+print(sum(p.numel() for p in m.parameters())/1e6, 'M parameters')   # print the number of parameters in the model
+
+for iter in range(max_iters):
+
+    # every once in a while evaluate the loss on train and val sets
+    if iter % eval_interval == 0 or iter == max_iters - 1:
+        losses = estimate_loss()
+        print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
+
+    # sample a batch of data
+    xb, yb = get_batch('train')
+
+    # evaluate the loss
+    logits, loss = model(xb, yb)
+    optimizer.zero_grad(set_to_none=True)
+    loss.backward()
+    optimizer.step()
+
+# generate from the model
+context = torch.zeros((1, 1), dtype=torch.long, device=device)
+print(decode(m.generate(context, max_new_tokens=2000)[0].tolist()))
+
 
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
 print(decode(m.generate(idx=torch.zeros((1, 1), dtype=torch.long), max_new_tokens=1000)[0].tolist()))
