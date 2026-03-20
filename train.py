@@ -10,7 +10,7 @@ start = time.time()
 # Hyperparameters
 batch_size    = 16
 block_size    = 32
-max_iters     = 5000
+max_iters     = 10000
 eval_interval = 100
 learning_rate = 1e-3
 device        = 'cuda' if torch.cuda.is_available() else 'cpu'
