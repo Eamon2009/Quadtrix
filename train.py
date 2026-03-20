@@ -8,8 +8,8 @@ from config.config import *
 start = time.time()
 
 # Hyperparameters
-batch_size    = 16
-block_size    = 32
+batch_size    = 32
+block_size    = 64
 max_iters     = 10000
 eval_interval = 100
 learning_rate = 1e-3
