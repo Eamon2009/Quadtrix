@@ -1,4 +1,4 @@
-# Bigram Language Model 
+# Transformer Language Model 
 
 A character-level GPT transformer built from scratch in PyTorch, trained on children's stories to generate simple English narrative text character by character. No pre-trained weights. No fine-tuning. Pure architecture and training from zero.
 - Actual Training log
