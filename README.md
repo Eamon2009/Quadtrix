@@ -126,8 +126,7 @@ dropout       = 0.2     # Regularization — prevents memorization
 
 ## Actual Training Results
 
-Trained on: AMD Ryzen 5 PRO 3500U (CPU only, no GPU)
-
+Trained on:Hardware : CPU only — AMD Ryzen 5 PRO 3500U (4 cores, 8 threads, 15W TDP)
 ```
 Parameters    : 0.82M
 Dataset       : 201,570 characters of children's stories
