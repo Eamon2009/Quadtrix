@@ -4,5 +4,6 @@
 .env
 __pycache__
 best_model.pt
+.ipynb_checkpoints
 
 
