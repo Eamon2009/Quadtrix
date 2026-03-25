@@ -83,7 +83,7 @@ No other dependencies needed. The project uses only PyTorch and Python standard 
 ## How to Run
 
 ```bash
-python train.py
+python transformer.py
 ```
 
 The script will:
