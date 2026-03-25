@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+import os
 
 # --- GPU-Scale Hyperparameters ---
 n_embd     = 384 
@@ -9,6 +10,8 @@ n_layer    = 6
 block_size = 256
 dropout    = 0.2
 device     = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+# --- Architecture ---
 
 class Head(nn.Module):
     def __init__(self, head_size):
@@ -113,5 +116,13 @@ class GPTLanguageModel(nn.Module):
 
 # --- TRAINING LOGIC WRAPPER ---
 if __name__ == "__main__":
-    print("Run your training script or separate cell to train.")
-    print("This file is now a library of classes.")
+    # This part only runs if you execute transformer.py directly.
+    # It points to your original data.txt
+    dataset_path = 'data.txt' 
+    if os.path.exists(dataset_path):
+        with open(dataset_path, 'r', encoding='utf-8') as f:
+            text = f.read()
+        chars = sorted(list(set(text)))
+        print(f"Data Loaded. Vocab size: {len(chars)}")
+    else:
+        print(f"File {dataset_path} not found.")
