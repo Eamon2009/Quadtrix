@@ -32,7 +32,7 @@ A character-level GPT transformer built from scratch in PyTorch, trained on chil
 
 ## What This Project Does
 
-This project trains a small GPT-style transformer model on children's stories and then generates new story-like text character by character. It is a learning project — the goal is not to produce publishable stories, but to understand how language models learn patterns from text and to see that process happen live on your own machine.
+This project trains a small GPT-style transformer model on children's stories and then generates new story-like text character by character. It is a learning project — the goal is not to produce publishable stories, but to understand how language models learn patterns from text and to see that process happen live on your own machine and cloud GPU.
 
 ---
 
