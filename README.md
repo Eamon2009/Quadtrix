@@ -3,7 +3,8 @@
 A character-level GPT transformer built from scratch in PyTorch, trained on children's stories to generate simple English narrative text character by character. No pre-trained weights. No fine-tuning. Pure architecture and training from zero.
 
 > **Latest run:** 10.82M parameter model trained on Google Colab GPU — val loss **0.7176** in 61 minutes.
-<img width="848" height="1079" alt="Screenshot 2026-03-22 145832" src="https://github.com/user-attachments/assets/4a8980b9-dfb1-419a-a3e3-f4ad5cf6a414" />
+<img width="679" height="714" alt="Screenshot 2026-03-22 215122" src="https://github.com/user-attachments/assets/87a38176-836e-4528-ad6a-bcdafad6e5c0" />
+
 
 ## CPU RUN
 <img width="946" height="845" alt="Screenshot 2026-03-21 001248" src="https://github.com/user-attachments/assets/8e88d5fd-880d-4236-be33-030af9c79a88" />
