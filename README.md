@@ -472,3 +472,6 @@ that night, he had never seen a small boy just soon could drink.
 ---
 
 *Built with PyTorch.*
+
+https://github.com/Eamon2009/Transformer-language-model
+https://github.com/Eamon2009/Transformer-language-model
