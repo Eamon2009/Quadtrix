@@ -1,6 +1,9 @@
 import torch
 from torch.nn import functional as F
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from model import GPTLanguageModel, decode, device, block_size, model_path
 
 def run_inference():
@@ -21,7 +24,7 @@ def run_inference():
     try:
         with torch.no_grad():
             while True:
-                idx_cond = context[:, -block_size:]
+                idx_cond  = context[:, -block_size:]
                 logits, _ = model(idx_cond)
                 logits    = logits[:, -1, :]
                 probs     = F.softmax(logits, dim=-1)
