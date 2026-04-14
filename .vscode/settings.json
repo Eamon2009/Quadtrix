@@ -1,5 +1,6 @@
 {
        "github.copilot.nextEditSuggestions.enabled": false,
        "python-envs.defaultEnvManager": "ms-python.python:system",
-       "python-envs.defaultPackageManager": "ms-python.python:pip"
+       "python-envs.defaultPackageManager": "ms-python.python:pip",
+       "cmake.sourceDirectory": "C:/Users/Admin/Documents/GitHub/Bigram-language-model/generate"
 }
