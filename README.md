@@ -418,7 +418,7 @@ All gaps are small and healthy. Run 3 sits between Run 1 and Run 2, which matche
 
 <img width="1029" height="705" alt="Screenshot 2026-03-17 171921" src="https://github.com/user-attachments/assets/69b2c840-14f2-4cd1-b4b4-662abda569ff" />
 
-### What Are Scaling Laws?
+### What is Scaling Law?
 
 Scaling laws describe a predictable relationship between model size, dataset size, compute, and output quality:
 
