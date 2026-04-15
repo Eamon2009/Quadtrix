@@ -1,5 +1,7 @@
 # Quadtrix  ![GitHub](https://img.shields.io/github/license/Eamon2009/Transformer-language-model)
 <img width="1138" height="515" alt="image" src="https://github.com/user-attachments/assets/cb665099-bdc0-4966-b857-f80a56a6642d" />
+<img width="1919" height="756" alt="image" src="https://github.com/user-attachments/assets/4aef60c7-c136-4f8c-bec9-7a12fe2a17ce" />
+
 A character-level GPT transformer built from scratch in PyTorch, trained on children's stories to generate simple English narrative text character by character. No pre-trained weights. No fine-tuning. Pure architecture and training from zero.
 
 ---
