@@ -1,18 +1,6 @@
-# Transformer Language Model [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Zs84ZQf-0VPbQxHce1mlSMD-Jr22xJqZ#scrollTo=VdohdZ8imygv) ![GitHub](https://img.shields.io/github/license/Eamon2009/Transformer-language-model)
-<img width="425" height="311" alt="image" src="https://github.com/user-attachments/assets/1c9f152d-5281-4640-b587-0014f2eb8464" />
-
-
+# Quadtrix  ![GitHub](https://img.shields.io/github/license/Eamon2009/Transformer-language-model)
+<img width="1138" height="515" alt="image" src="https://github.com/user-attachments/assets/cb665099-bdc0-4966-b857-f80a56a6642d" />
 A character-level GPT transformer built from scratch in PyTorch, trained on children's stories to generate simple English narrative text character by character. No pre-trained weights. No fine-tuning. Pure architecture and training from zero.
-
-> **Latest run:** 1.99M parameter model trained on Tesla T4 GPU — val loss **0.9250** in just **6.1 minutes.**
-<img width="1919" height="1079" alt="Screenshot 2026-04-10 172442" src="https://github.com/user-attachments/assets/a79a5513-38b1-471e-acce-6015549b1ac1" />
-
-
-# GPU RUN-2
-<img width="679" height="714" alt="Screenshot 2026-03-22 215122" src="https://github.com/user-attachments/assets/87a38176-836e-4528-ad6a-bcdafad6e5c0" />
-
-## CPU RUN-1
-<img width="946" height="845" alt="Screenshot 2026-03-21 001248" src="https://github.com/user-attachments/assets/8e88d5fd-880d-4236-be33-030af9c79a88" />
 
 ---
 
