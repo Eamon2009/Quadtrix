@@ -1,0 +1,26 @@
+[    0/5000]   train=4.6207   val=4.6202   elapsed=2s    ETA=0s    << best!
+[  200/5000]   train=2.2058   val=2.1986   elapsed=17s   ETA=405s  << best!
+[  400/5000]   train=1.6111   val=1.6039   elapsed=32s   ETA=367s  << best!
+[  600/5000]   train=1.4109   val=1.4183   elapsed=47s   ETA=342s  << best!
+[  800/5000]   train=1.3230   val=1.3231   elapsed=61s   ETA=322s  << best!
+[ 1000/5000]   train=1.2495   val=1.2567   elapsed=76s   ETA=303s  << best!
+[ 1200/5000]   train=1.1960   val=1.1948   elapsed=90s   ETA=286s  << best!
+[ 1400/5000]   train=1.1569   val=1.1642   elapsed=105s  ETA=270s  << best!
+[ 1600/5000]   train=1.1283   val=1.1283   elapsed=120s  ETA=254s  << best!
+[ 1800/5000]   train=1.0894   val=1.1023   elapsed=134s  ETA=238s  << best!
+[ 2000/5000]   train=1.0731   val=1.0765   elapsed=149s  ETA=223s  << best!
+[ 2200/5000]   train=1.0584   val=1.0550   elapsed=163s  ETA=208s  << best!
+[ 2400/5000]   train=1.0415   val=1.0346   elapsed=178s  ETA=192s  << best!
+[ 2600/5000]   train=1.0261   val=1.0199   elapsed=192s  ETA=177s  << best!
+[ 2800/5000]   train=1.0106   val=1.0117   elapsed=207s  ETA=162s  << best!
+[ 3000/5000]   train=1.0000   val=0.9956   elapsed=221s  ETA=148s  << best!
+[ 3200/5000]   train=0.9913   val=0.9924   elapsed=236s  ETA=133s  << best!
+[ 3400/5000]   train=0.9727   val=0.9782   elapsed=251s  ETA=118s  << best!
+[ 3600/5000]   train=0.9656   val=0.9720   elapsed=265s  ETA=103s  << best!
+[ 3800/5000]   train=0.9685   val=0.9632   elapsed=280s  ETA=88s   << best!
+[ 4000/5000]   train=0.9601   val=0.9642   elapsed=294s  ETA=74s
+[ 4200/5000]   train=0.9515   val=0.9489   elapsed=309s  ETA=59s   << best!
+[ 4400/5000]   train=0.9433   val=0.9431   elapsed=323s  ETA=44s   << best!
+[ 4600/5000]   train=0.9384   val=0.9459   elapsed=338s  ETA=29s
+[ 4800/5000]   train=0.9331   val=0.9250   elapsed=353s  ETA=15s   << best!
+[ 4999/5000]   train=0.9307   val=0.9430   elapsed=367s  ETA=0s

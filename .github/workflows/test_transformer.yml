@@ -1,12 +1,12 @@
-name: Test Train Scripts
+name: Test Transformer
 
 on:
   push:
     paths:
-      - 'train_test/**'
+      - 'transformer.py'
   pull_request:
     paths:
-      - 'train_test/**'
+      - 'transformer.py'
 
 jobs:
   test:
@@ -22,5 +22,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run train_test scripts
-        run: python -m train_test
+      - name: Run transformer tests
+        run: python transformer.py

@@ -1,9 +1,14 @@
-# Virtual environments
 .venv
 eamon_env
 __pycache__
 best_model.pt
 .ipynb_checkpoints
 .exe
-
-
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.ckpt
+!checkpoints/.gitkeep
+!checkpoints/README.md
+!logs/.gitkeep
+!logs/README.md
+!logs/train_loss.csv

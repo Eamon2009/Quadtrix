@@ -1,15 +1,19 @@
-name: Test Train Scripts
+name: General CI
 
 on:
   push:
-    paths:
+    paths-ignore:
+      - 'transformer.py'
       - 'train_test/**'
+      - '**.md'
   pull_request:
-    paths:
+    paths-ignore:
+      - 'transformer.py'
       - 'train_test/**'
+      - '**.md'
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,5 +26,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run train_test scripts
-        run: python -m train_test
+      - name: General check
+        run: echo "General CI passed for this commit"

@@ -1,0 +1,16 @@
+[    0/3000]   0.0%   train=3.2961   val=3.2981   elapsed=12s     ETA=0s      best!
+[  200/3000]   6.7%   train=2.3038   val=2.2490   elapsed=141s    ETA=1959s   best!
+[  400/3000]  13.3%   train=2.2469   val=2.1950   elapsed=292s    ETA=1891s   best!
+[  600/3000]  20.0%   train=2.1842   val=2.1318   elapsed=436s    ETA=1739s   best!
+[  800/3000]  26.7%   train=1.9742   val=1.9103   elapsed=581s    ETA=1594s   best!
+[ 1000/3000]  33.3%   train=1.7628   val=1.7002   elapsed=723s    ETA=1443s   best!
+[ 1200/3000]  40.0%   train=1.6714   val=1.6040   elapsed=863s    ETA=1293s   best!
+[ 1400/3000]  46.7%   train=1.5889   val=1.5360   elapsed=1015s   ETA=1158s   best!
+[ 1600/3000]  53.3%   train=1.5375   val=1.4723   elapsed=1166s   ETA=1019s   best!
+[ 1800/3000]  60.0%   train=1.4847   val=1.4525   elapsed=1320s   ETA=879s    best!
+[ 2000/3000]  66.7%   train=1.4604   val=1.4081   elapsed=1472s   ETA=735s    best!
+[ 2200/3000]  73.3%   train=1.4113   val=1.3857   elapsed=1653s   ETA=600s    best!
+[ 2400/3000]  80.0%   train=1.3923   val=1.3725   elapsed=1820s   ETA=454s    best!
+[ 2600/3000]  86.7%   train=1.3501   val=1.3446   elapsed=1998s   ETA=307s    best!
+[ 2800/3000]  93.3%   train=1.3336   val=1.3334   elapsed=2174s   ETA=154s    best!
+[ 2999/3000] 100.0%   train=1.3191   val=1.3145   elapsed=2363s   ETA=0s      best!
