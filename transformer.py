@@ -6,11 +6,15 @@ import sys
 import os
 from config.config import *
 
-print("=" * 60)
-print("  GPT Language Model - Training Pipeline")
-print("=" * 60)
-print(f"\n[INFO] Starting at: {time.strftime('%Y-%m-%d %H:%M:%S')}")
-print(f"[INFO] Using device: {'cuda' if torch.cuda.is_available() else 'cpu'}")
+SEP  = "─" * 60
+SEP2 = "═" * 60
+
+print(SEP2)
+print("   Language Model  ·  Training Pipeline")
+print(SEP2)
+print(f"  started   : {time.strftime('%Y-%m-%d %H:%M:%S')}")
+print(f"  device    : {'cuda' if torch.cuda.is_available() else 'cpu'}")
+print(SEP2)
 
 start = time.time()
 
@@ -27,15 +31,19 @@ n_head        = 4
 n_layer       = 4
 dropout       = 0.2
 
-print(f"\n[CONFIG] Hyperparameters loaded:")
-print(f"         batch_size={batch_size}, block_size={block_size}")
-print(f"         max_iters={max_iters}, learning_rate={learning_rate}")
-print(f"         n_embd={n_embd}, n_head={n_head}, n_layer={n_layer}, dropout={dropout}")
+print(f"\n[CONFIG] {'─' * 40}")
+print(f"  batch_size    : {batch_size}")
+print(f"  block_size    : {block_size}")
+print(f"  max_iters     : {max_iters:,}")
+print(f"  learning_rate : {learning_rate:.2e}")
+print(f"  n_embd        : {n_embd}  |  n_head : {n_head}  |  n_layer : {n_layer}")
+print(f"  dropout       : {dropout}")
 
 torch.manual_seed(seed)
 
 # ── Data loading ───────────────────────────────────────────
-print(f"\n[DATA]  Loading text from: {cleaned_path}")
+print(f"\n[DATA]  {'─' * 40}")
+print(f"  loading       : {cleaned_path}")
 with open(cleaned_path, 'r', encoding='utf-8') as f:
     text2 = f.read()
 
@@ -51,10 +59,10 @@ n          = int(train_split * len(data))
 train_data = data[:n]
 val_data   = data[n:]
 
-print(f"[DATA]  Total characters : {len(text2):,}")
-print(f"[DATA]  Vocabulary size  : {vocab_size}")
-print(f"[DATA]  Train tokens     : {len(train_data):,}")
-print(f"[DATA]  Val   tokens     : {len(val_data):,}")
+print(f"  total chars   : {len(text2):,}")
+print(f"  vocab size    : {vocab_size}")
+print(f"  train tokens  : {len(train_data):,}")
+print(f"  val tokens    : {len(val_data):,}")
 
 
 # ── Batch / loss helpers ───────────────────────────────────
@@ -192,20 +200,25 @@ class GPTLanguageModel(nn.Module):
 
 
 # ── Build model ────────────────────────────────────────────
-print(f"\n[MODEL] Building GPTLanguageModel...")
+print(f"\n[MODEL] {'─' * 40}")
 model    = GPTLanguageModel().to(device)
 n_params = sum(p.numel() for p in model.parameters())
-print(f"[MODEL] Parameters  : {n_params / 1e6:.2f} M  ({n_params:,} total)")
-print(f"[MODEL] Architecture: {n_layer} layers x {n_head} heads x {n_embd} embedding dim")
+print(f"  architecture  : {n_layer} layers  ×  {n_head} heads  ×  {n_embd} d_model")
+print(f"  parameters    : {n_params / 1e6:.2f} M  ({n_params:,} total)")
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
-print(f"[OPTIM] AdamW optimizer, lr={learning_rate}")
+
+print(f"\n[OPTIM] {'─' * 40}")
+print(f"  optimizer     : AdamW")
+print(f"  lr            : {learning_rate:.2e}")
 
 
 # ── Training loop ──────────────────────────────────────────
-print(f"\n{'─' * 60}")
-print(f"  TRAINING  ({max_iters} iterations, eval every {eval_interval})")
-print(f"{'─' * 60}")
+print(f"\n{SEP}")
+print(f"  TRAINING  ·  {max_iters:,} iters  ·  eval every {eval_interval}")
+print(f"{SEP}")
+print(f"  {'step':>10}  {'%':>6}  {'train':>8}  {'val':>8}  {'elapsed':>8}  {'ETA':>8}")
+print(f"  {'─'*10}  {'─'*6}  {'─'*8}  {'─'*8}  {'─'*8}  {'─'*8}")
 
 best_val_loss = float('inf')
 train_start   = time.time()
@@ -217,15 +230,15 @@ for iter in range(max_iters):
         elapsed  = time.time() - train_start
         pct      = 100 * iter / max_iters
         eta_secs = (elapsed / (iter + 1)) * (max_iters - iter - 1) if iter > 0 else 0
-        improved = " << best!" if losses['val'] < best_val_loss else ""
+        improved = "   best" if losses['val'] < best_val_loss else ""
 
         if losses['val'] < best_val_loss:
             best_val_loss = losses['val']
             torch.save(model.state_dict(), 'best_model.pt')
 
-        print(f"[{iter:>5}/{max_iters}] {pct:5.1f}%  "
-              f"train={losses['train']:.4f}  val={losses['val']:.4f}  "
-              f"elapsed={elapsed:.0f}s  ETA={eta_secs:.0f}s{improved}")
+        print(f"  {iter:>5}/{max_iters:<5}  {pct:>5.1f}%  "
+              f"{losses['train']:>8.4f}  {losses['val']:>8.4f}  "
+              f"{elapsed:>7.0f}s  {eta_secs:>7.0f}s{improved}")
         sys.stdout.flush()
 
     xb, yb       = get_batch('train')
@@ -235,14 +248,17 @@ for iter in range(max_iters):
     optimizer.step()
 
 total_time = time.time() - train_start
-print(f"\n[DONE]  Training finished in {total_time:.1f}s "
-      f"({total_time / 60:.1f} min)  |  Best val loss: {best_val_loss:.4f}")
-print(f"[SAVE]  Best weights saved to best_model.pt")
+print(f"\n{SEP}")
+print(f"[DONE]  {'─' * 40}")
+print(f"  duration      : {total_time:.1f}s  ({total_time / 60:.1f} min)")
+print(f"  best val loss : {best_val_loss:.4f}")
+print(f"  weights saved : best_model.pt")
+print(SEP)
 
 
 # ── Infinite generation in same terminal ───────────────────
-print(f"\n{'─' * 60}")
-print(f"  MODEL OUTPUT  (Ctrl+C to stop)")
+print(f"\n[GEN]   {'─' * 40}")
+print(f"  streaming output  ·  Ctrl+C to stop")
 print(f"{'─' * 60}\n")
 
 model.eval()
@@ -261,7 +277,9 @@ try:
                 context = context[:, -block_size:]
             print(decode([idx_next[0].item()]), end='', flush=True)
 except KeyboardInterrupt:
-    print("\n\n[Stopped by user]")
+    print("\n\n[GEN]   stopped by user")
 
 end = time.time()
-print(f"\n[TOTAL] Wall-clock time: {end - start:.1f}s  ({(end - start) / 60:.1f} min)")
+print(f"\n{SEP}")
+print(f"[TOTAL] wall-clock : {end - start:.1f}s  ({(end - start) / 60:.1f} min)")
+print(SEP)

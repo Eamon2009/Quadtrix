@@ -1,0 +1,26 @@
+name: Test Transformer
+
+on:
+  push:
+    paths:
+      - 'transformer.py'
+  pull_request:
+    paths:
+      - 'transformer.py'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version-file: '.python-version'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run transformer tests
+        run: python transformer.py

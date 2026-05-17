@@ -1,0 +1,26 @@
+name: Test Train Scripts
+
+on:
+  push:
+    paths:
+      - 'train_test/**'
+  pull_request:
+    paths:
+      - 'train_test/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version-file: '.python-version'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run train_test scripts
+        run: python -m train_test
